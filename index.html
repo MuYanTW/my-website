@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MuYan慕言的網站</title>
+    <title>我的個人網站</title>
     <style>
         * {
             margin: 0;
@@ -78,7 +78,7 @@
             position: relative;
             z-index: 1;
             overflow: hidden;
-            background-image: url('https://drive.google.com/uc?export=view&id=1ajSuETwwYtot2FgPVFsF4oHw9dkbssun');
+            background-image: url('your-photo.jpg');
             background-size: cover;
             background-position: center;
         }
@@ -181,13 +181,35 @@
                 padding: 30px 20px;
             }
         }
+
+        .copied-toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
+            font-size: 1em;
+            font-weight: bold;
+            opacity: 0;
+            transition: all 0.4s ease;
+            z-index: 1000;
+        }
+
+        .copied-toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
             <div class="profile-img">👤</div>
-            <h1>你的名字</h1>
+            <h1>MuYan 慕言</h1>
             <p class="subtitle">影片創作者 / 程式愛好者 / 生活分享家</p>
         </div>
 
@@ -228,18 +250,57 @@
             <div class="section">
                 <h2>聯絡方式</h2>
                 <div class="contact">
-                    <a href="mailto:your.email@example.com" class="contact-item">
+                    <button onclick="copyEmail()" class="contact-item" style="cursor: pointer; border: none; font-family: inherit;">
                         📧 Email
+                    </button>
+                    <a href="https://www.youtube.com/@MuYan-2266" class="contact-item" target="_blank">
+                        ▶️ YouTube
                     </a>
-                    <a href="https://github.com/yourusername" class="contact-item" target="_blank">
-                        💻 GitHub
+                    <a href="https://www.instagram.com/muyan_come_on/" class="contact-item" target="_blank">
+                        📷 Instagram
                     </a>
-                    <a href="#" class="contact-item">
-                        💼 LinkedIn
+                    <a href="https://www.twitch.tv/muyan2266" class="contact-item" target="_blank">
+                        🎮 Twitch
                     </a>
                 </div>
             </div>
         </div>
     </div>
+
+    <div id="copiedToast" class="copied-toast">
+        ✓ Email 已複製！
+    </div>
+
+    <script>
+        function copyEmail() {
+            const email = 'muyancome@gmail.com';
+            
+            // 複製到剪貼簿
+            navigator.clipboard.writeText(email).then(function() {
+                // 顯示提示訊息
+                const toast = document.getElementById('copiedToast');
+                toast.classList.add('show');
+                
+                // 3秒後隱藏
+                setTimeout(function() {
+                    toast.classList.remove('show');
+                }, 3000);
+            }).catch(function(err) {
+                // 如果瀏覽器不支援，使用舊方法
+                const textArea = document.createElement('textarea');
+                textArea.value = email;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                
+                const toast = document.getElementById('copiedToast');
+                toast.classList.add('show');
+                setTimeout(function() {
+                    toast.classList.remove('show');
+                }, 3000);
+            });
+        }
+    </script>
 </body>
 </html>
