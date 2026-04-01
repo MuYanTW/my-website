@@ -3,303 +3,333 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MuYan慕言的個人網站</title>
+    <title>你愛我嗎？</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --cake-color-1: #ff85a1;
+            --cake-color-2: #f9bec7;
+            --cake-color-3: #ffb3c1;
+            --cream-color: #ffffff;
         }
 
         body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: linear-gradient(135deg, #ff6b6b 0%, #feca57 50%, #48dbfb 100%);
-            min-height: 100vh;
+            margin: 0;
+            padding: 0;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            animation: gradient 15s ease infinite;
-            background-size: 200% 200%;
-        }
-
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .container {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            max-width: 800px;
-            width: 100%;
-            overflow: hidden;
-        }
-
-        .header {
-            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
-            color: white;
-            padding: 60px 40px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: float 8s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            50% { transform: translate(-20px, -20px) rotate(180deg); }
-        }
-
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background: white;
-            margin: 0 auto 20px;
-            display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-size: 60px;
-            border: 5px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            position: relative;
-            z-index: 1;
+            height: 100vh;
+            background-color: #fff0f3;
+            font-family: "Microsoft JhengHei", sans-serif;
             overflow: hidden;
-            background-image: url('https://yt3.googleusercontent.com/nDhstCw2fQRrKPCgD0HXapPATd7Ziw3Az3HAG7RpGg2R4AaRvTRRDBXI6osBP1u2L9iP4ATL1Zo=s160-c-k-c0x00ffffff-no-rj');
-            background-size: cover;
-            background-position: center;
-        }
-
-        .profile-img:hover {
-            transform: scale(1.05);
-            transition: transform 0.3s ease;
         }
 
         h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-
-        .subtitle {
-            font-size: 1.2em;
-            opacity: 0.9;
-        }
-
-        .content {
-            padding: 40px;
-        }
-
-        .section {
+            color: #ff4d6d;
+            font-size: 3rem;
             margin-bottom: 30px;
+            z-index: 10;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
 
-        .section h2 {
-            color: #ff6b6b;
-            font-size: 1.5em;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #ffe6e6;
-        }
-
-        .section p {
-            line-height: 1.8;
-            color: #555;
-            font-size: 1.1em;
-        }
-
-        .skills {
+        /* --- 蛋糕美化區域 --- */
+        .cake {
+            position: relative;
             display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .skill-tag {
-            background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            box-shadow: 0 4px 10px rgba(255, 107, 107, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .skill-tag:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(255, 107, 107, 0.4);
-        }
-
-        .contact {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 15px;
-        }
-
-        .contact-item {
-            display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 8px;
-            color: #555;
-            text-decoration: none;
-            padding: 10px 15px;
-            background: #f5f5f5;
-            border-radius: 8px;
-            transition: all 0.3s;
+            animation: bounce 2s infinite ease-in-out;
+            z-index: 5;
         }
 
-        .contact-item:hover {
-            background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+        .layer {
+            position: relative;
+            border: 4px solid #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        @media (max-width: 600px) {
-            .header {
-                padding: 40px 20px;
-            }
-
-            h1 {
-                font-size: 2em;
-            }
-
-            .content {
-                padding: 30px 20px;
-            }
+        /* 蛋糕頂層 */
+        .layer-top {
+            width: 80px;
+            height: 60px;
+            background-color: var(--cake-color-1);
+            border-radius: 20px 20px 10px 10px; /* 頂部大圓角，但留點平整給蠟燭 */
+            z-index: 3;
+            margin-bottom: -5px;
+            position: relative; /* 用於定位蠟燭 */
         }
 
-        .copied-toast {
-            position: fixed;
-            bottom: 30px;
+        /* 蛋糕中層 */
+        .layer-middle {
+            width: 140px;
+            height: 80px;
+            background-color: var(--cake-color-2);
+            border-radius: 20px 20px 10px 10px;
+            z-index: 2;
+            margin-bottom: -5px;
+        }
+
+        /* 蛋糕底層 */
+        .layer-bottom {
+            width: 220px;
+            height: 100px;
+            background-color: var(--cake-color-3);
+            border-radius: 15px 15px 5px 5px;
+            z-index: 1;
+        }
+
+        /* 奶油裝飾 (偽元素) */
+        .layer::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 0;
+            width: 100%;
+            height: 15px;
+            background-image: radial-gradient(circle, var(--cream-color) 70%, transparent 71%);
+            background-size: 20px 20px;
+            background-position: 0 -10px;
+        }
+
+        /* --- 蠟燭設計區域 --- */
+        .candles {
+            position: absolute;
+            bottom: calc(100% - 10px); /* 插在層頂部 */
             left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            color: white;
-            padding: 15px 30px;
-            border-radius: 50px;
-            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
-            font-size: 1em;
-            font-weight: bold;
-            opacity: 0;
-            transition: all 0.4s ease;
-            z-index: 1000;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 4; /* 在層之上 */
         }
 
-        .copied-toast.show {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
+        .candle {
+            position: relative;
+            width: 8px;
+            height: 30px;
+            border-radius: 4px;
+            border: 2px solid #fff;
+        }
+
+        /* 蠟燭顏色 */
+        .candle1 { background-color: #ff4d6d; } /* 紅 */
+        .candle2 { background-color: #4dabf7; } /* 藍 */
+        .candle3 { background-color: #ffbf00; } /* 黃 */
+
+        /* 燭芯 */
+        .wick {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 6px;
+            background-color: #333;
+        }
+
+        /* 火燄 */
+        .flame {
+            position: absolute;
+            bottom: calc(100% + 5px);
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 20px;
+            border-radius: 50% 50% 20% 20%;
+            background-image: radial-gradient(circle at 50% 100%, #ff8c00, #ff4500, #ff0000); /* 暖色漸層 */
+            box-shadow: 0 0 10px rgba(255, 69, 0, 0.7);
+            filter: blur(0.5px);
+            opacity: 0.9;
+            /* 綜合多個動畫：閃爍、搖擺、微小閃動 */
+            animation: flicker 0.1s infinite alternate, sway 1s infinite alternate, flicker-opacity 0.5s infinite alternate;
+        }
+
+        /* 火燄動畫設計 */
+        /* 閃爍：隨機大小和位置變動 */
+        @keyframes flicker {
+            0%, 100% { transform: translateX(-50%) scale(1); }
+            20%, 60% { transform: translateX(-52%) scale(1.05); }
+            40%, 80% { transform: translateX(-48%) scale(0.95); }
+        }
+
+        /* 搖擺：輕微旋轉 */
+        @keyframes sway {
+            0% { transform: translateX(-50%) rotate(-2deg); }
+            100% { transform: translateX(-50%) rotate(2deg); }
+        }
+
+        /* 閃動：透明度微小變化 */
+        @keyframes flicker-opacity {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.9; }
+        }
+
+        /* 為每個火燄設置不同的動畫延遲和速度，使其不同步，看起來更自然 */
+        .candle1 .flame {
+            animation-delay: 0s, -0.2s, 0s;
+            animation-duration: 0.1s, 0.8s, 0.5s;
+        }
+        .candle2 .flame {
+            animation-delay: -0.1s, -0.5s, -0.2s;
+            animation-duration: 0.15s, 1.2s, 0.7s;
+        }
+        .candle3 .flame {
+            animation-delay: -0.2s, -0.8s, -0.4s;
+            animation-duration: 0.08s, 0.9s, 0.4s;
+        }
+
+        /* --- 其他元素動畫 --- */
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* --- 按鈕區域 --- */
+        .btn-container {
+            margin-top: 50px;
+            position: relative;
+            width: 300px;
+            height: 100px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 10;
+        }
+
+        button {
+            padding: 15px 35px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3);
+        }
+
+        #yesBtn {
+            background-color: #ff4d6d;
+            color: white;
+        }
+
+        #yesBtn:hover {
+            transform: scale(1.1);
+            background-color: #ff758f;
+        }
+
+        #noBtn {
+            background-color: #adb5bd;
+            color: white;
+            position: absolute;
+            left: 170px;
+        }
+
+        /* --- 彩帶與圓點動畫 --- */
+        .confetti {
+            position: fixed;
+            top: -20px;
+            user-select: none;
+            pointer-events: none;
+            animation: fall linear forwards;
+            z-index: 1;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(110vh) rotate(720deg);
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="profile-img"></div>
-            <h1>MuYan 慕言</h1>
-            <p class="subtitle">影片創作者 / 程式愛好者 / 生活分享家</p>
-        </div>
 
-        <div class="content">
-            <div class="section">
-                <h2>關於我</h2>
-                <p>
-                    哈囉！我是 MuYan 慕言，一位熱愛用鏡頭記錄生活的創作者。
-                    我喜歡拍攝影片、剪輯，透過影像說故事，分享生活中的美好時刻。
-                    同時，我也對程式語言充滿熱情，覺得寫程式就像解謎一樣有趣，
-                    能夠用程式碼實現各種創意想法，這個過程讓我著迷不已！
-                </p>
+    <h1>你愛我嗎?</h1>
+
+    <div class="cake">
+        <div class="candles">
+            <div class="candle candle1">
+                <div class="wick"></div>
+                <div class="flame"></div>
             </div>
-
-            <div class="section">
-                <h2>技能</h2>
-                <div class="skills">
-                    <span class="skill-tag">影片拍攝</span>
-                    <span class="skill-tag">影片剪輯</span>
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">JavaScript</span>
-                    <span class="skill-tag">網頁開發</span>
-                    <span class="skill-tag">內容創作</span>
-                    <span class="skill-tag">生活分享</span>
-                </div>
+            <div class="candle candle2">
+                <div class="wick"></div>
+                <div class="flame"></div>
             </div>
-
-            <div class="section">
-                <h2>興趣</h2>
-                <p>
-                    我熱愛探索生活中的各種可能性，不論是透過鏡頭捕捉精彩瞬間，
-                    還是用程式碼打造有趣的專案。喜歡學習新技術、嘗試新事物，
-                    並且樂於將這些經驗和心得分享給大家。創作對我來說，
-                    不只是興趣，更是生活的一部分！
-                </p>
-            </div>
-
-            <div class="section">
-                <h2>聯絡方式</h2>
-                <div class="contact">
-                    <button onclick="copyEmail()" class="contact-item" style="cursor: pointer; border: none; font-family: inherit;">
-                        📧 Email
-                    </button>
-                    <a href="https://www.youtube.com/@MuYan-2266" class="contact-item" target="_blank">
-                        ▶️ YouTube
-                    </a>
-                    <a href="https://www.instagram.com/muyan_come_on/" class="contact-item" target="_blank">
-                        📷 Instagram
-                    </a>
-                    <a href="https://www.twitch.tv/muyan2266" class="contact-item" target="_blank">
-                        🎮 Twitch
-                    </a>
-                </div>
+            <div class="candle candle3">
+                <div class="wick"></div>
+                <div class="flame"></div>
             </div>
         </div>
+        
+        <div class="layer layer-top"></div>
+        <div class="layer layer-middle"></div>
+        <div class="layer layer-bottom"></div>
     </div>
 
-    <div id="copiedToast" class="copied-toast">
-        ✓ Email 已複製！
+    <div class="btn-container">
+        <button id="yesBtn" onclick="celebrate()">Yes</button>
+        <button id="noBtn" onmouseover="moveNoButton()" onclick="moveNoButton()">No</button>
     </div>
 
     <script>
-        function copyEmail() {
-            const email = 'muyancome@gmail.com';
+        // 暖色系配色池 (炎熱/繽紛感)
+        const colors = [
+            '#ff4d6d', // 熱情紅
+            '#ff758f', // 亮粉
+            '#ffb703', // 亮橘黃
+            '#fb8500', // 深橘
+            '#ff006e', // 桃紅
+            '#fee440'  // 鮮黃
+        ];
+
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti');
             
-            // 複製到剪貼簿
-            navigator.clipboard.writeText(email).then(function() {
-                // 顯示提示訊息
-                const toast = document.getElementById('copiedToast');
-                toast.classList.add('show');
-                
-                // 3秒後隱藏
-                setTimeout(function() {
-                    toast.classList.remove('show');
-                }, 3000);
-            }).catch(function(err) {
-                // 如果瀏覽器不支援，使用舊方法
-                const textArea = document.createElement('textarea');
-                textArea.value = email;
-                document.body.appendChild(textArea);
-                textArea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textArea);
-                
-                const toast = document.getElementById('copiedToast');
-                toast.classList.add('show');
-                setTimeout(function() {
-                    toast.classList.remove('show');
-                }, 3000);
-            });
+            // 隨機形狀：50% 圓形, 50% 長方形彩帶
+            const isCircle = Math.random() > 0.5;
+            const width = Math.random() * 10 + 8 + 'px';
+            const height = isCircle ? width : (Math.random() * 20 + 10 + 'px');
+            
+            confetti.style.width = width;
+            confetti.style.height = height;
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.borderRadius = isCircle ? '50%' : '2px';
+            
+            // 隨機位置與動畫參數
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
+            confetti.style.opacity = Math.random() * 0.8 + 0.2;
+            
+            document.body.appendChild(confetti);
+
+            setTimeout(() => {
+                confetti.remove();
+            }, 5000);
+        }
+
+        // 每 150 毫秒產生一個，讓畫面更豐富
+        setInterval(createConfetti, 150);
+
+        function moveNoButton() {
+            const btn = document.getElementById('noBtn');
+            const maxX = window.innerWidth - btn.offsetWidth;
+            const maxY = window.innerHeight - btn.offsetHeight;
+
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+
+            btn.style.position = 'fixed';
+            btn.style.left = randomX + 'px';
+            btn.style.top = randomY + 'px';
+        }
+
+        function celebrate() {
+            alert("我就知道你也愛我！❤️✨");
+            location.reload();
         }
     </script>
 </body>
